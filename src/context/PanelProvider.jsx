@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { PanelContext } from './PanelContext'
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
