@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
+import Layout from './Layout';
 const apiUrl = import.meta.env.VITE_API_URL;
 
 const AddProduct = () => {
     let navigator = useNavigate();
     const [categories, setCategories] = useState([]);
+
     const [formData, setFormData] = useState({
         name: '',
         price: '',
@@ -63,8 +65,11 @@ const AddProduct = () => {
         form.append('image', formData.image);
         console.log("submit=>", JSON.stringify(formData.category));
         fetch(`${apiUrl}/api/products/`, {
-            method: 'POST',
+
+            method: "post",
+            // body: JSON.stringify(form),
             headers: {
+                // 'auth-token': localStorage.getItem('token')
                 'Authorization': `Bearer ${token}`,
             },
             body: form,
@@ -95,6 +100,7 @@ const AddProduct = () => {
     };
 
     return (
+        <Layout>
         <div className="max-w-sm mx-auto my-8 p-4 bg-white rounded shadow-lg">
             <h2 className="text-lg font-semibold mb-4">Add Product</h2>
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -161,7 +167,8 @@ const AddProduct = () => {
                 </button>
             </form>
         </div>
+        </Layout>
     );
 };
 
-export default AddProduct;
+export default AddProduct

@@ -7,34 +7,9 @@ import { LuUser } from 'react-icons/lu';
 const apiUrl = import.meta.env.VITE_API_URL;
 
 const Navbar = () => {
-
+    const { isAuthenticated } = useContext(PanelContext);
     const location = useLocation();
-    const [isAuthenticated, setIsAuthenticated] = useState(false)
     const { logout } = useContext(PanelContext);
-
-    useEffect(() => {
-
-        const token = localStorage.getItem('token')
-
-        const checkToken = async () => {
-            const response = await fetch(`${apiUrl}/auth/verify-token`, {
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                }
-            })
-            const data = await response.json()
-            if (data.user) {
-                console.log(data.user, 'user nav')
-                setIsAuthenticated(true)
-            } else {
-                setIsAuthenticated(false)
-            }
-        }
-
-        checkToken()
-
-    }, []);
-
 
 
     return (

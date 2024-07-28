@@ -8,7 +8,7 @@ import Navbar from './Navbar';
 const apiUrl = import.meta.env.VITE_API_URL;
 
 const Login = () => {
-  const { isAuthenticated, setIsAuthenticated } = useContext(PanelContext);
+  const { setIsAuthenticated } = useContext(PanelContext);
   const [loading, setLoading] = useState(false); // State to manage loading spinner
 
   const signInGoogle = async () => {
@@ -45,7 +45,7 @@ const Login = () => {
 
       if (res.ok) {
         localStorage.setItem('token', data.authToken);
-        localStorage.setItem('admin-data', JSON.stringify(data.user));
+        // localStorage.setItem('admin-data', JSON.stringify(data.user));
         setIsAuthenticated(true);
         Swal.fire({
           position: "center",
