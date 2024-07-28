@@ -3,6 +3,7 @@ import { FaEdit, FaTrash, FaList, FaPlus } from 'react-icons/fa'; // Import FaLi
 import Layout from '../Layout';
 const apiUrl = import.meta.env.VITE_API_URL;
 import { addCategory, deleteCategory, updateCategory} from './categoryApi';
+import { Link } from 'react-router-dom'
 
 const CategoriesPage = () => {
   const [categories, setCategories] = useState([]);
@@ -123,7 +124,8 @@ const CategoriesPage = () => {
                   </button>
                 </form>
               ) : (
-                category.categoryName
+                  //  
+                  <Link to={`/categories/${category.categoryName}`}>{category.categoryName}</Link>
               )}
             </div>
             <div className="w-5/12 flex justify-end px-4 py-2 space-x-4">

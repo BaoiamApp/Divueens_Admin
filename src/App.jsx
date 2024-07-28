@@ -17,6 +17,7 @@ import Footer from './components/Footer'
 import Orders from './components/Order/Orders'
 import OrderDetails from './components/Order/OrderDetails'
 import ShopItems from './components/Shopping/ShopItems'
+import Productcategory from './components/Category/Productcategory'
 
 
 
@@ -68,18 +69,10 @@ function App() {
          {/* pending work */}
          <Route exact path="/banner" element={<ProtectedRoute> <Banner /> </ProtectedRoute>} />
         <Route exact path="/categories" element={<ProtectedRoute> <Categories/> </ProtectedRoute> }/>
+        <Route exact path="/categories/:name" element={<ProtectedRoute> <Productcategory/> </ProtectedRoute> }/>
         <Route exact path="/orders" element={<ProtectedRoute> <Orders/> </ProtectedRoute> }/>
         <Route exact path="/orders/:id" element={<ProtectedRoute> <OrderDetails/> </ProtectedRoute> }/>
         <Route exact path="/shopping" element={<ProtectedRoute> <ShopItems/> </ProtectedRoute> }/>  
-
-        {/* <Route exact path="/" element={<Product />} />
-<Route exact path="/banner" element={<Banner />} />
-<Route exact path="/add" element={<AddProduct />} />
-<Route exact path="/update/:_id" element={<ChangeProduct />} />
-<Route exact path="/admin-profile" element={<AdminProfile />} />
-<Route exact path="/categories" element={<Categories />} /> */}
-
-
 
 
         {/* chatching routes which are not defined */}
