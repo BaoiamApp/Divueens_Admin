@@ -12,7 +12,7 @@ const AddProduct = () => {
         name: '',
         price: '',
         description: '',
-        category: null,
+        category: '',
         image: null,
     });
 
@@ -36,15 +36,24 @@ const AddProduct = () => {
         });
     };
 
+    // const handleCategoryChange = (e) => {
+    //     const selectedCategory = categories.find(
+    //         (category) => category.categoryName === e.target.value
+    //     );
+    //     setFormData({
+    //         ...formData,
+    //         category: selectedCategory,
+    //     });
+    // };
+
     const handleCategoryChange = (e) => {
-        const selectedCategory = categories.find(
-            (category) => category.categoryName === e.target.value
-        );
+        const selectedcategory = e.target.value;
         setFormData({
             ...formData,
-            category: selectedCategory,
+            category: selectedcategory,
         });
     };
+
 
     const handleImageChange = (e) => {
         const file = e.target.files[0];
@@ -61,9 +70,11 @@ const AddProduct = () => {
         form.append('name', formData.name);
         form.append('price', formData.price);
         form.append('description', formData.description);
-        form.append('category', JSON.stringify(formData.category));
+        // form.append('category', JSON.stringify(formData.category));
+        form.append('category',(formData.category))
         form.append('image', formData.image);
-        console.log("submit=>", JSON.stringify(formData.category));
+        // console.log("submit=>", JSON.stringify(formData.category));
+        console.log("submit=>", (formData.category));
         fetch(`${apiUrl}/api/products/`, {
 
             method: "post",
@@ -94,7 +105,7 @@ const AddProduct = () => {
             name: '',
             price: '',
             description: '',
-            category: null,
+            category: '',
             image: null,
         });
     };
@@ -137,14 +148,14 @@ const AddProduct = () => {
                 <label className="block text-sm font-medium text-gray-700">Category</label>
                 <select
                     name="category"
-                    value={formData.category ? formData.category.categoryName : ''}
+                    value={formData.category || "" }
                     onChange={handleCategoryChange}
                     className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                     required
                 >
                     <option value="" disabled>Select a category</option>
                     {categories.map((category) => (
-                        <option key={category._id} value={category.categoryName}>
+                        <option key={category._id} value={category._id}>
                             {category.categoryName}
                         </option>
                     ))}

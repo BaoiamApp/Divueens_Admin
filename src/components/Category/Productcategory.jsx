@@ -9,7 +9,7 @@ const apiUrl = import.meta.env.VITE_API_URL;
 const Product = () => {
     const [productList, setProductList] = useState([])
     const params = useParams()
-    console.log(params.name,': params')
+    console.log(params.name, ': params')
 
     useEffect(() => {
         fetch(`${apiUrl}/api/categories/${params.name}/products`).then((res) => {
@@ -47,7 +47,15 @@ const Product = () => {
 
         <Layout>
             <div className="w-full h-full">
-                <h2 className="text-2xl p-4 text-center font-semibold">LIST OF PRODUCTS</h2>
+                
+                <h2 className="text-xl text-gray-500 p-4 font-semibold"> 
+                    <Link
+                     to={"/categories"}
+                    >
+                     Categories
+                    </Link> : {params.name}
+                </h2>
+
                 <div className="w-full flex flex-wrap justify-center items-center gap-4 py-4">
                     {productList?.map((product, index) => (
                         <div key={index} className="w-[200px] bg-white border rounded-lg shadow-md p-4 transition duration-300 hover:shadow-lg flex flex-col items-center">
