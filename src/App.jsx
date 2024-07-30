@@ -14,6 +14,7 @@ import Category from './components/Category/Category'
 import Orders from './components/Order/Orders'
 import OrderDetails from './components/Order/OrderDetails'
 import ShopItems from './components/Shopping/ShopItems'
+import Productcategory from './components/Category/Productcategory'
 
 
 
@@ -58,16 +59,16 @@ function App() {
         <Route exact path="/add" element={<ProtectedRoute> <AddProduct /> </ProtectedRoute>} />
         <Route exact path="/update/:_id" element={<ProtectedRoute> <ChangeProduct /> </ProtectedRoute>} />
         <Route exact path="/admin-profile" element={<ProtectedRoute> <AdminProfile /> </ProtectedRoute>} />
+
+
+         {/* pending work */}
       
-         {/* pending work*/}
          <Route exact path="/banner" element={<ProtectedRoute> <Banner /> </ProtectedRoute>} />
         <Route exact path="/categories" element={<ProtectedRoute> <Category/> </ProtectedRoute> }/>
+        <Route exact path="/categories/:name" element={<ProtectedRoute> <Productcategory/> </ProtectedRoute> }/>
         <Route exact path="/orders" element={<ProtectedRoute> <Orders/> </ProtectedRoute> }/>
         <Route exact path="/orders/:id" element={<ProtectedRoute> <OrderDetails/> </ProtectedRoute> }/>
         <Route exact path="/shopping" element={<ProtectedRoute> <ShopItems/> </ProtectedRoute> }/>  
-
-
-
 
 
         {/* chatching routes which are not defined */}
